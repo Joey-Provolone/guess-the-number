@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 	},
 	headerText: {
 		color: "white",
-		fontSize: 24,
+		fontSize: 28,
 	},
 });
 
