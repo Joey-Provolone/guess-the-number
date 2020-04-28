@@ -10,7 +10,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 import colors from "./constants/colors";
 
 const fetchFonts = () => {
-	Font.loadAsync({
+	return Font.loadAsync({
 		"open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
 		"open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
 	});
@@ -18,7 +18,8 @@ const fetchFonts = () => {
 
 export default function App() {
 	const [userNumber, setUserNumber] = useState();
-	const [guessCount, setGuessCount] = useState(0);
+	const [guessCount, setGuessCount] = useState(1);
+	const [lieCount, setLieCount] = useState(1);
 	const [dataLoaded, setDataLoaded] = useState(false);
 
 	if (!dataLoaded) {
@@ -37,6 +38,7 @@ export default function App() {
 
 	const gameOverHandler = (numOfRounds) => {
 		setGuessCount(numOfRounds);
+		// setLieCount(numOfLies);
 	};
 
 	const newGameHandler = () => {
@@ -54,6 +56,7 @@ export default function App() {
 		content = (
 			<GameOverScreen
 				guessCount={guessCount}
+				lieCount={lieCount}
 				userNumber={userNumber}
 				onRestart={newGameHandler}
 			/>
