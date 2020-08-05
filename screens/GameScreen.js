@@ -22,6 +22,7 @@ const GameScreen = (props) => {
 		generateRandomBetween(1, 100, props.userNumber)
 	);
 	const [guessCount, setGuessCount] = useState(0);
+	const [lieCount, setLieCount] = useState(0);
 
 	const currentLow = useRef(1);
 	const currentHigh = useRef(100);
@@ -30,7 +31,7 @@ const GameScreen = (props) => {
 
 	useEffect(() => {
 		if (currentGuess === userNumber) {
-			props.onGameOver(guessCount);
+			props.onGameOver(guessCount, lieCount);
 		}
 	}, [currentGuess, userNumber, onGameOver]);
 
@@ -42,6 +43,7 @@ const GameScreen = (props) => {
 			Alert.alert("Don't lie!", "Cheaters never win", [
 				{ text: "Sorry!", style: "cancel" },
 			]);
+			setLieCount((curLieCount) => curLieCount + 1);
 			return;
 		}
 		if (direction === "lower") {

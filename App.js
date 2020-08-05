@@ -18,8 +18,8 @@ const fetchFonts = () => {
 
 export default function App() {
 	const [userNumber, setUserNumber] = useState();
-	const [guessCount, setGuessCount] = useState(1);
-	const [lieCount, setLieCount] = useState(1);
+	const [guessCount, setGuessCount] = useState(0);
+	const [lieCount, setLieCount] = useState(0);
 	const [dataLoaded, setDataLoaded] = useState(false);
 
 	if (!dataLoaded) {
@@ -36,13 +36,14 @@ export default function App() {
 		setUserNumber(selectedNumber);
 	};
 
-	const gameOverHandler = (numOfRounds) => {
+	const gameOverHandler = (numOfRounds, numOfLies) => {
 		setGuessCount(numOfRounds);
-		// setLieCount(numOfLies);
+		setLieCount(numOfLies);
 	};
 
 	const newGameHandler = () => {
 		setGuessCount("0");
+		setLieCount(null);
 		setUserNumber(null);
 	};
 

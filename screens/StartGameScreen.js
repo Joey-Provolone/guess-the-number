@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		minWidth: "30%",
 		maxWidth: "40%",
+		backgroundColor: "white",
 	},
 	chosenContainer: {
 		padding: 10,
